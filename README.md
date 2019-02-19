@@ -7,7 +7,7 @@ In this assignment we will build on the shell you submitted for Homework 2. The 
 * Combining the above to run background jobs and bring them to the foreground.
 
 ### Signal Handling ###
-Recommended Reading [Signal Man Page](http://man7.org/linux/man-pages/man7/signal.7.html), [GNU Manual on Signal Handling](ftp://ftp.gnu.org/old-gnu/Manuals/glibc-2.2.3/html_chapter/libc_24.html)
+Recommended Reading [Signal Man Page](http://man7.org/linux/man-pages/man7/signal.7.html), GNU Manual on Signal Handling ftp://ftp.gnu.org/old-gnu/Manuals/glibc-2.2.3/html_chapter/libc_24.html  
 Your job is to handle the following signals as described:
 * SIGINT
   * This signal is usually sent when the user enters Ctrl-c. When your shell receives SIGINT it should print the following:
@@ -35,8 +35,7 @@ Your job is to handle the following signals as described:
   * Resume process execution if stopped, otherwise ignore. 
   
 ### IO Redirection ###
-Recommended reading: [BASH man page](https://linux.die.net/man/1/bash), [A dup2() tutorial](https://www.cs.rutgers.edu/~pxk/416/notes/c-tutorials/dup2.html)
-
+Recommended reading: [BASH man page](https://linux.die.net/man/1/bash), [A dup2() tutorial](https://www.cs.rutgers.edu/~pxk/416/notes/c-tutorials/dup2.html)  
 A pipe is a special kind of file type where the first data written is the first data read. Pipes are great because they allow us to set up pipelines like this:
 ```BASH
 CS361 > command1 | command2 | command3
@@ -56,7 +55,7 @@ We don't always want to print to stdout or read from stdin. In this case we can 
 Your job is to implement |, <, >, and >>. 
 
 ### Background Jobs ###
-Recommended reading [Job control in BASH](https://www.digitalocean.com/community/tutorials/how-to-use-bash-s-job-control-to-manage-foreground-and-background-processes)
+Recommended reading [Job control in BASH](https://www.digitalocean.com/community/tutorials/how-to-use-bash-s-job-control-to-manage-foreground-and-background-processes)  
 Another shell feature is the ability to run jobs in the background. A job is initialized in the background by appending an ampersand, &, to the end of a command. For example: 
 ```BASH
 CS361 > emacs hw3.c &
