@@ -4,12 +4,13 @@
 In this assignment we will build on the shell you submitted for Homework 2. The learning objectives for this assignment are. 
 * Demonstraing knowledge of Linux signal handling best practices including those outlined in Bryant & O'Hallaron ch 8.5.5
 * Gaining more familiarity with the system calls in unistd.h by implementing file redirection. 
+* Combining the above to run background jobs and bring them to the foreground.
 
 ### Signal Handling ###
 Recommended Reading [Signal Man Page](http://man7.org/linux/man-pages/man7/signal.7.html), [GNU Manual on Signal Handling](ftp://ftp.gnu.org/old-gnu/Manuals/glibc-2.2.3/html_chapter/libc_24.html)
-Your shell is required to handle the following signals as described:
+Your job is to handle the following signals as described:
 * SIGINT
-  * This signal is usually sent when the user enters Ctrl + c. When your shell receives SIGINT it should print the following:
+  * This signal is usually sent when the user enters Ctrl-c. When your shell receives SIGINT it should print the following:
   ```BASH
   Caught: Interrupt
   ```
@@ -38,11 +39,11 @@ Recommended reading: [BASH man page](https://linux.die.net/man/1/bash), [A dup2(
 
 A pipe is a special kind of file type where the first data written is the first data read. Pipes are great because they allow us to set up pipelines like this:
 ```BASH
-CS361 >command1 | command2 | command3
+CS361 > command1 | command2 | command3
 ```
 Where the output of command1 is the input to command2 and the output of command2 is the input to command3 and command3 outputs to stdout. You may have even used pipes before. For instance, you can select all running processes that match a description with
 ```Bash
-ps -e | grep "a.out"
+CS361 > ps -e | grep "a.out"
 ```
 Which takes the output of ps and writes it to a pipe. Grep reads from the pipe and then prints its output to stdout. 
 We don't always want to print to stdout or read from stdin. In this case we can Redirect Input and Output. This is done with the >, >>, and < commands. 
@@ -54,9 +55,24 @@ We don't always want to print to stdout or read from stdin. In this case we can 
   
 Your job is to implement |, <, >, and >>. 
 
+### Background Jobs ###
+Recommended reading [Job control in BASH](https://www.digitalocean.com/community/tutorials/how-to-use-bash-s-job-control-to-manage-foreground-and-background-processes)
+Another shell feature is the ability to run jobs in the background. A job is initialized in the background by appending an ampersand, &, to the end of a command. For example: 
+```BASH
+CS361 > emacs hw3.c &
+```
+In this command the text editor emacs is started with hw3.c ready to edit, but its in the background. To bring it to the foreground type: 
+```BASH
+CS361 > fg
+```
+To send the editor back to the background type Ctrl-z. 
+A background job generating output to stdout will typically interleave output with the foreground program. A background job attempting to read from the terminal will be sent SIGTTIN. The job should wait until it is brought into the foreground with SIGCONT before attempting the read. 
+
+Your job is to implement &, fg, and properly handle signals SIGTTOUT, SIGTTIN
+
 ### Administration ###
 Submission will be on gradescope. If there is an autograder it will have limited submissions to discourage guess-and-check programming. Submit a makefile with target hw3. Your shell executes with the command ./hw3. 
 
-You will get one point each for implementing the 5 signal handlers, the pipe, and the 3 redirects for a total of 9 points. 
+You will get one point each for implementing the 5 signal handlers, the pipe, the 3 redirects, &, fg, and SIGGTTIN for a total of 12 points. 
 
 There is no code stub to begin
