@@ -75,3 +75,5 @@ Submission will be on gradescope. If there is an autograder it will have limited
 You will get one point each for implementing the 5 signal handlers, the pipe, the 3 redirects, &, fg, and SIGGTTIN for a total of 12 points. 
 
 There is no code stub to begin
+
+You can assume that there will be no quotations in input strings and that commands will be separated by whitespace and terminated with \n. 
