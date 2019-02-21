@@ -40,9 +40,9 @@ A pipe is a special kind of file type where the first data written is the first 
 ```BASH
 CS361 > command1 | command2 | command3
 ```
-Where the output of command1 is the input to command2 and the output of command2 is the input to command3 and command3 outputs to stdout. You may have even used pipes before. For instance, you can select all running processes that match a description with
+Where the output of command1 is the input to command2 and the output of command2 is the input to command3 and command3 outputs to stdout. You may have even used pipes before. For instance, you can sort all the output of ls using sort
 ```Bash
-CS361 > ps -e | grep "a.out"
+CS361 > ls -al | sort
 ```
 Which takes the output of ps and writes it to a pipe. Grep reads from the pipe and then prints its output to stdout. 
 We don't always want to print to stdout or read from stdin. In this case we can Redirect Input and Output. This is done with the >, >>, and < commands. 
