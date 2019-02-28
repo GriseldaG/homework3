@@ -67,7 +67,9 @@ CS361 > fg
 To send the editor back to the background type Ctrl-z. 
 A background job generating output to stdout will typically interleave output with the foreground program. A background job attempting to read from the terminal will be sent SIGTTIN. The job should wait until it is brought into the foreground with SIGCONT before attempting the read. 
 
-Your job is to implement &, fg, and properly handle signals SIGTTOUT, SIGTTIN
+Your job is to implement &, ~~fg~~, and properly handle signals SIGTTOUT, SIGTTIN
+
+28-Feb-2019 - We have removed the requirement to implement fg. Please also see [GNU guide to job processing](http://www.gnu.org/software/libc/manual/html_node/Stopped-and-Terminated-Jobs.html#Stopped-and-Terminated-Jobs). 
 
 ### Administration ###
 Submission will be on gradescope. If there is an autograder it will have limited submissions to discourage guess-and-check programming. Submit a makefile with target hw3. Your shell executes with the command ./hw3. 
