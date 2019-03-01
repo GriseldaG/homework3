@@ -32,7 +32,11 @@ Your job is to handle the following signals as described:
   * Pause program execution.
   
 * SIGCONT
-  * Resume process execution if stopped, otherwise ignore. 
+  * Resume process execution if stopped, otherwise ignore.
+  * Your shell should resume with the prompt printed to screen
+  ```
+  CS361 >
+  ```
   
 ### IO Redirection ###
 Recommended reading: [BASH man page](https://linux.die.net/man/1/bash), [A dup2() tutorial](https://www.cs.rutgers.edu/~pxk/416/notes/c-tutorials/dup2.html)  
